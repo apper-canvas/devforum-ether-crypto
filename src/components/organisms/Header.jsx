@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/layouts/Root";
+import notificationService from "@/services/api/notificationService";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import SearchBar from "@/components/molecules/SearchBar";
-import notificationService from "@/services/api/notificationService";
+
 const Header = () => {
+  const { logout } = useAuth()
 const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -94,18 +97,19 @@ const handleMarkAllRead = async () => {
           </div>
 
 {/* Notifications */}
-          <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="relative p-2 text-gray-600 hover:text-primary transition-colors rounded-lg hover:bg-gray-100"
-              aria-label="Notifications"
-            >
-              <ApperIcon name="Bell" className="w-5 h-5" />
-              {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-error text-white text-xs font-semibold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5">
-                  {unreadCount > 99 ? '99+' : unreadCount}
-                </span>
-              )}
+<div className="flex items-center gap-2">
+            <div className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="relative p-2 text-gray-600 hover:text-primary transition-colors rounded-lg hover:bg-gray-100"
+                aria-label="Notifications"
+              >
+                <ApperIcon name="Bell" className="w-5 h-5" />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-error text-white text-xs font-semibold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5">
+                    {unreadCount > 99 ? '99+' : unreadCount}
+                  </span>
+                )}
             </button>
 
             {dropdownOpen && (
@@ -163,17 +167,26 @@ const handleMarkAllRead = async () => {
             )}
           </div>
 
-          {/* Ask Question Button */}
+{/* Ask Question Button */}
           <div className="flex items-center gap-4">
             <Link to="/ask">
               <Button className="hidden sm:flex">
-                <ApperIcon name="Plus" className="w-4 h-4 mr-2" />
                 Ask Question
               </Button>
               <Button size="sm" className="sm:hidden">
                 <ApperIcon name="Plus" className="w-4 h-4" />
               </Button>
             </Link>
+
+            <button
+              onClick={logout}
+              className="p-2 text-gray-600 hover:text-error transition-colors rounded-lg hover:bg-gray-100"
+              aria-label="Logout"
+              title="Logout"
+            >
+              <ApperIcon name="LogOut" className="w-5 h-5" />
+            </button>
+          </div>
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
