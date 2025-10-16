@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import ApperIcon from "@/components/ApperIcon";
 import VoteControls from "@/components/molecules/VoteControls";
 import UserBadge from "@/components/molecules/UserBadge";
@@ -18,14 +17,13 @@ import { toast } from "react-toastify";
 
 const QuestionDetail = () => {
   const { id } = useParams();
-  const { isAuthenticated } = useSelector((state) => state.user);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [newAnswer, setNewAnswer] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [comments, setComments] = useState([]);
+const [comments, setComments] = useState([]);
   const loadQuestion = async () => {
     try {
       setLoading(true);
@@ -209,49 +207,29 @@ questionId={question.id}
         )}
       </div>
 
-{/* Answer Form - Authenticated Users Only */}
-      {isAuthenticated ? (
-        <div className="bg-surface border border-gray-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Answer</h3>
-          <form onSubmit={handleSubmitAnswer} className="space-y-4">
-            <MarkdownEditor
-              value={newAnswer}
-              onChange={(e) => setNewAnswer(e.target.value)}
-              placeholder="Share your knowledge and help the community..."
-            />
-            
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-600">
-                Use Markdown for formatting. Code blocks are supported with syntax highlighting.
-              </p>
-              <Button 
-                type="submit"
-                disabled={!newAnswer.trim() || submitting}
-              >
-                {submitting ? "Posting..." : "Post Your Answer"}
-              </Button>
-            </div>
-          </form>
-        </div>
-      ) : (
-        <div className="bg-surface border border-gray-200 rounded-lg p-6 text-center">
-          <ApperIcon name="Lock" className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            Want to post an answer?
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Sign in to share your knowledge and help the community. Already have an account?
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Button asChild variant="outline">
-              <Link to="/login">Sign In</Link>
-            </Button>
-            <Button asChild>
-              <Link to="/signup">Sign Up</Link>
+      {/* Answer Form */}
+      <div className="bg-surface border border-gray-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Answer</h3>
+        <form onSubmit={handleSubmitAnswer} className="space-y-4">
+          <MarkdownEditor
+            value={newAnswer}
+            onChange={(e) => setNewAnswer(e.target.value)}
+            placeholder="Share your knowledge and help the community..."
+          />
+          
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-600">
+              Use Markdown for formatting. Code blocks are supported with syntax highlighting.
+            </p>
+            <Button 
+              type="submit"
+              disabled={!newAnswer.trim() || submitting}
+            >
+              {submitting ? "Posting..." : "Post Your Answer"}
             </Button>
           </div>
-        </div>
-      )}
+        </form>
+      </div>
     </div>
   );
 };
