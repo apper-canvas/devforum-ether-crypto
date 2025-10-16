@@ -1,0 +1,73 @@
+@import 'react-toastify/dist/ReactToastify.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .code-block {
+    @apply bg-gray-900 text-gray-100 rounded-lg p-4 font-mono text-sm overflow-x-auto;
+  }
+  
+  .code-inline {
+    @apply bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded font-mono text-sm;
+  }
+}
+
+/* Toast Styling */
+.Toastify__toast-container {
+  top: 5rem;
+  right: 1rem;
+  width: 320px;
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  @apply bg-white border border-gray-200 text-gray-800 shadow-lg;
+  border-radius: 8px;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.Toastify__toast--success {
+  @apply border-success;
+}
+
+.Toastify__toast--error {
+  @apply border-error;
+}
+
+.Toastify__toast--info {
+  @apply border-info;
+}
+
+.Toastify__toast--warning {
+  @apply border-warning;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
+}
+
+.Toastify__progress-bar--success {
+  @apply bg-success;
+}
+
+.Toastify__progress-bar--error {
+  @apply bg-error;
+}
+
+.Toastify__progress-bar--info {
+  @apply bg-info;
+}
+
+.Toastify__progress-bar--warning {
+  @apply bg-warning;
+}

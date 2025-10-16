@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "userId": "user10",
+    "targetId": "1",
+    "targetType": "question",
+    "value": 1
+  },
+  {
+    "Id": 2,
+    "userId": "user11",
+    "targetId": "1",
+    "targetType": "question",
+    "value": 1
+  },
+  {
+    "Id": 3,
+    "userId": "user12",
+    "targetId": "2",
+    "targetType": "question",
+    "value": 1
+  },
+  {
+    "Id": 4,
+    "userId": "user13",
+    "targetId": "answer1",
+    "targetType": "answer",
+    "value": 1
+  },
+  {
+    "Id": 5,
+    "userId": "user14",
+    "targetId": "answer3",
+    "targetType": "answer",
+    "value": 1
+  }
+]

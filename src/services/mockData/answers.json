@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "questionId": 1,
+    "body": "You need to add `justify-content` and `align-items` properties to center the div both horizontally and vertically:\n\n```css\n.container {\n  display: flex;\n  height: 100vh;\n  justify-content: center; /* Centers horizontally */\n  align-items: center;     /* Centers vertically */\n}\n\n.content {\n  background: blue;\n  width: 200px;\n  height: 100px;\n}\n```\n\nThis will center your `.content` div perfectly within the `.container`.",
+    "authorId": "user10",
+    "authorName": "Tom Wilson",
+    "authorReputation": 5420,
+    "votes": 22,
+    "isAccepted": true,
+    "createdAt": "2024-01-15T11:15:00Z",
+    "updatedAt": "2024-01-15T11:15:00Z"
+  },
+  {
+    "Id": 2,
+    "questionId": 1,
+    "body": "Another approach is to use `margin: auto` on the content:\n\n```css\n.container {\n  display: flex;\n  height: 100vh;\n}\n\n.content {\n  background: blue;\n  width: 200px;\n  height: 100px;\n  margin: auto;\n}\n```\n\nThis is a more concise solution that achieves the same result.",
+    "authorId": "user11",
+    "authorName": "Maria Garcia",
+    "authorReputation": 3240,
+    "votes": 15,
+    "isAccepted": false,
+    "createdAt": "2024-01-15T12:30:00Z",
+    "updatedAt": "2024-01-15T12:30:00Z"
+  },
+  {
+    "Id": 3,
+    "questionId": 2,
+    "body": "This is expected behavior in React. State updates are asynchronous and React batches them for performance. The `console.log(count)` runs immediately after calling `setCount`, but the state hasn't been updated yet.\n\nHere are two solutions:\n\n**Solution 1: Use the functional form of setState**\n```javascript\nconst handleClick = () => {\n  setCount(prevCount => {\n    const newCount = prevCount + 1;\n    console.log(newCount); // This will show the new value\n    return newCount;\n  });\n};\n```\n\n**Solution 2: Use useEffect to respond to state changes**\n```javascript\nuseEffect(() => {\n  console.log(count); // This will log whenever count changes\n}, [count]);\n```",
+    "authorId": "user12",
+    "authorName": "Kevin Lee",
+    "authorReputation": 4650,
+    "votes": 35,
+    "isAccepted": true,
+    "createdAt": "2024-01-14T17:22:00Z",
+    "updatedAt": "2024-01-14T17:22:00Z"
+  },
+  {
+    "Id": 4,
+    "questionId": 2,
+    "body": "React state updates are asynchronous. You can use a `useRef` to get immediate access to the latest value:\n\n```javascript\nconst [count, setCount] = useState(0);\nconst countRef = useRef(count);\n\nconst handleClick = () => {\n  const newCount = count + 1;\n  setCount(newCount);\n  countRef.current = newCount;\n  console.log(countRef.current); // Shows updated value immediately\n};\n```",
+    "authorId": "user13",
+    "authorName": "Amy Zhang",
+    "authorReputation": 2890,
+    "votes": 18,
+    "isAccepted": false,
+    "createdAt": "2024-01-14T18:45:00Z",
+    "updatedAt": "2024-01-14T18:45:00Z"
+  },
+  {
+    "Id": 5,
+    "questionId": 3,
+    "body": "List comprehensions are generally faster than equivalent for loops in Python. Here's why:\n\n1. **List comprehensions are optimized at the C level**\n2. **They avoid the overhead of repeated function calls**\n3. **Memory allocation is more efficient**\n\n```python\nimport timeit\n\n# List comprehension\ndef list_comp():\n    return [x**2 for x in range(1000)]\n\n# For loop\ndef for_loop():\n    result = []\n    for x in range(1000):\n        result.append(x**2)\n    return result\n\n# Benchmark\ncomp_time = timeit.timeit(list_comp, number=10000)\nloop_time = timeit.timeit(for_loop, number=10000)\n\nprint(f\"List comprehension: {comp_time:.4f}s\")\nprint(f\"For loop: {loop_time:.4f}s\")\n```\n\n**Guidelines:**\n- Use list comprehensions for simple transformations\n- Use for loops when you need complex logic or multiple operations\n- List comprehensions are more readable for simple cases",
+    "authorId": "user14",
+    "authorName": "Carlos Rodriguez",
+    "authorReputation": 6780,
+    "votes": 28,
+    "isAccepted": false,
+    "createdAt": "2024-01-13T16:30:00Z",
+    "updatedAt": "2024-01-13T16:30:00Z"
+  },
+  {
+    "Id": 6,
+    "questionId": 4,
+    "body": "Both approaches have their merits, but I recommend **try-catch blocks** for most cases:\n\n**Advantages of try-catch:**\n- More readable and familiar to developers\n- Can handle multiple async operations in one block\n- Better for complex error handling logic\n- Follows the principle of least surprise\n\n```javascript\nasync function handleData() {\n  try {\n    const user = await fetchUser();\n    const orders = await fetchOrders(user.id);\n    const processed = await processData(user, orders);\n    return processed;\n  } catch (error) {\n    // Handle all errors in one place\n    console.error('Operation failed:', error);\n    throw new Error('Data processing failed');\n  }\n}\n```\n\n**Use .catch() when:**\n- You want to handle specific errors for individual operations\n- You need to provide fallback values\n- You're chaining multiple async operations\n\n```javascript\nconst data = await fetchData()\n  .catch(error => ({ error: error.message }));\n```",
+    "authorId": "user15",
+    "authorName": "Sophie Miller",
+    "authorReputation": 5240,
+    "votes": 42,
+    "isAccepted": true,
+    "createdAt": "2024-01-12T14:20:00Z",
+    "updatedAt": "2024-01-12T14:20:00Z"
+  }
+]

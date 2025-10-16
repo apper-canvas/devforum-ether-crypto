@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "userId": 1,
+    "questionId": 1,
+    "answerId": 3,
+    "message": "Sarah Chen answered your question about React hooks",
+    "type": "answer",
+    "read": false,
+    "createdAt": "2024-01-15T14:30:00Z"
+  },
+  {
+    "Id": 2,
+    "userId": 1,
+    "questionId": 2,
+    "answerId": 4,
+    "message": "Mike Johnson answered your question about TypeScript",
+    "type": "answer",
+    "read": true,
+    "createdAt": "2024-01-14T10:15:00Z"
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "targetType": "question",
+    "targetId": "q1",
+    "authorId": "user3",
+    "content": "Have you tried using `async/await` instead of promises? It makes the code much more readable.",
+    "parentId": null,
+    "createdAt": "2024-01-15T14:30:00Z",
+    "updatedAt": "2024-01-15T14:30:00Z"
+  },
+  {
+    "Id": 2,
+    "targetType": "question",
+    "targetId": "q1",
+    "authorId": "user1",
+    "content": "Yes, I've tried that approach. The issue is specifically with how the state updates are batched.",
+    "parentId": 1,
+    "createdAt": "2024-01-15T15:00:00Z",
+    "updatedAt": "2024-01-15T15:00:00Z"
+  },
+  {
+    "Id": 3,
+    "targetType": "question",
+    "targetId": "q1",
+    "authorId": "user6",
+    "content": "Could you share a minimal reproducible example? That would help diagnose the issue.",
+    "parentId": null,
+    "createdAt": "2024-01-15T16:20:00Z",
+    "updatedAt": "2024-01-15T16:20:00Z"
+  },
+  {
+    "Id": 4,
+    "targetType": "answer",
+    "targetId": "a1",
+    "authorId": "user4",
+    "content": "This solution worked perfectly for me! Thanks for the detailed explanation.",
+    "parentId": null,
+    "createdAt": "2024-01-15T17:45:00Z",
+    "updatedAt": "2024-01-15T17:45:00Z"
+  },
+  {
+    "Id": 5,
+    "targetType": "answer",
+    "targetId": "a1",
+    "authorId": "user2",
+    "content": "One thing to note: this approach might have performance implications with large datasets.",
+    "parentId": null,
+    "createdAt": "2024-01-15T18:10:00Z",
+    "updatedAt": "2024-01-15T18:10:00Z"
+  },
+  {
+    "Id": 6,
+    "targetType": "answer",
+    "targetId": "a1",
+    "authorId": "user3",
+    "content": "Good point! You could optimize it by using `useMemo` for expensive computations.",
+    "parentId": 5,
+    "createdAt": "2024-01-15T18:30:00Z",
+    "updatedAt": "2024-01-15T18:30:00Z"
+  },
+  {
+    "Id": 7,
+    "targetType": "question",
+    "targetId": "q2",
+    "authorId": "user10",
+    "content": "Are you using the latest version of the library? There were some fixes in v2.1.0.",
+    "parentId": null,
+    "createdAt": "2024-01-16T09:15:00Z",
+    "updatedAt": "2024-01-16T09:15:00Z"
+  },
+  {
+    "Id": 8,
+    "targetType": "question",
+    "targetId": "q3",
+    "authorId": "user7",
+    "content": "This is a common issue when working with CSS Grid. Have you considered using Flexbox instead?",
+    "parentId": null,
+    "createdAt": "2024-01-16T11:20:00Z",
+    "updatedAt": "2024-01-16T11:20:00Z"
+  },
+  {
+    "Id": 9,
+    "targetType": "answer",
+    "targetId": "a2",
+    "authorId": "user11",
+    "content": "Excellent answer! Just wanted to add that you should also consider accessibility implications.",
+    "parentId": null,
+    "createdAt": "2024-01-16T13:45:00Z",
+    "updatedAt": "2024-01-16T13:45:00Z"
+  },
+  {
+    "Id": 10,
+    "targetType": "answer",
+    "targetId": "a2",
+    "authorId": "user5",
+    "content": "Could you elaborate on the accessibility concerns?",
+    "parentId": 9,
+    "createdAt": "2024-01-16T14:00:00Z",
+    "updatedAt": "2024-01-16T14:00:00Z"
+  }
+]
