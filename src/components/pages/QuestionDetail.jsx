@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ApperIcon from "@/components/ApperIcon";
 import VoteControls from "@/components/molecules/VoteControls";
 import UserBadge from "@/components/molecules/UserBadge";
@@ -101,6 +102,8 @@ const [comments, setComments] = useState([]);
   if (error) return <Error message={error} onRetry={loadQuestion} />;
   if (!question) return <Error message="Question not found" />;
 
+const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state) => state.user);
   const canAcceptAnswer = true; // In real app, check if current user is question author
 
   return (
@@ -207,10 +210,23 @@ questionId={question.id}
         )}
       </div>
 
-      {/* Answer Form */}
+{/* Answer Form */}
       <div className="bg-surface border border-gray-200 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Answer</h3>
-        <form onSubmit={handleSubmitAnswer} className="space-y-4">
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          
+          // Check authentication before allowing answer submission
+          if (!isAuthenticated) {
+            // Redirect to login with current question URL as redirect parameter
+            const redirectPath = `/question/${id}`;
+            navigate(`/login?redirect=${encodeURIComponent(redirectPath)}`);
+            return;
+          }
+          
+          // If authenticated, proceed with normal submission
+          handleSubmitAnswer(e);
+        }} className="space-y-4">
           <MarkdownEditor
             value={newAnswer}
             onChange={(e) => setNewAnswer(e.target.value)}
