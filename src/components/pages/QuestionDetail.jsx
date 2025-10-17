@@ -17,7 +17,9 @@ import { answerService } from "@/services/api/answerService";
 import { toast } from "react-toastify";
 
 const QuestionDetail = () => {
-  const { id } = useParams();
+const { id } = useParams();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state) => state.user);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -102,8 +104,6 @@ const [comments, setComments] = useState([]);
   if (error) return <Error message={error} onRetry={loadQuestion} />;
   if (!question) return <Error message="Question not found" />;
 
-const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.user);
   const canAcceptAnswer = true; // In real app, check if current user is question author
 
   return (
